@@ -65,7 +65,7 @@ function refreshAuth(req, res) {
       json: true,
       body: form
     }, (error, response, body) => {
-      if (error || !response || !response.body! || !response.body.access_token) {
+      if (error || !response || !response.body || !response.body.access_token) {
         debug('failed to refresh token', error);
         reject(error);
       } else {
