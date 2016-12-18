@@ -9,7 +9,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bdefore/express-jwt-proxy.git"
+    "url": "git+https://github.com/bdunham/express-jwt-proxy.git"
   },
   "dependencies": {
     "body-parser": "1.13.2",
@@ -29,13 +29,13 @@
     "dev": "babel --presets es2015 src/ -w --out-dir $PROJECT_PATH/node_modules/express-jwt-proxy/lib",
     "prepublish": "npm run compile"
   },
-  "homepage": "https://github.com/bdefore/express-jwt-proxy",
+  "homepage": "https://github.com/bdunham/express-jwt-proxy",
   "maintainers": [
     "Buck DeFore <bdefore@gmail.com>"
   ],
   "directories": {},
   "bugs": {
-    "url": "https://github.com/bdefore/express-jwt-proxy/issues"
+    "url": "https://github.com/bdunham/express-jwt-proxy/issues"
   },
   "keywords": [
     "jwt",
