@@ -61,7 +61,9 @@ function refreshAuth(req, res) {
     request({
       method: 'POST',
       url: options.auth.endpoint,
-      form: form
+      headers: { 'Content-Type': 'application/vnd.api+json' },
+      json: true,
+      body: form
     }, (error, response, body) => {
       if (error || !response || !parse(response.body) || !parse(response.body).access_token) {
         debug('failed to refresh token', error);
@@ -131,7 +133,7 @@ function login(req, res) {
   request({
     method: 'POST',
     url: options.auth.endpoint,
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/vnd.api+json' },
     json: true,
     body: form
   }, (error, response, body) => {
@@ -153,7 +155,7 @@ function logout(req, res) {
 
 function apiProxy(req, res) {
   let headers = {};
-  headers['Content-Type'] = 'application/json';
+  headers['Content-Type'] = 'application/vnd.api+json';
 
   if (req.session && req.session.access_token) {
     const now = new Date().getTime() / 1000;
