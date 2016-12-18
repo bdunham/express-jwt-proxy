@@ -131,7 +131,9 @@ function login(req, res) {
   request({
     method: 'POST',
     url: options.auth.endpoint,
-    form: form
+    headers: { 'Content-Type': 'application/json' },
+    json: true,
+    body: form
   }, (error, response, body) => {
     // console.log('got response from auth server:', error, response);
     handleAuthResponse(error, response, body, req, res);
