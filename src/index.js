@@ -65,11 +65,11 @@ function refreshAuth(req, res) {
       json: true,
       body: form
     }, (error, response, body) => {
-      if (error || !response || !parse(response.body) || !parse(response.body).access_token) {
+      if (error || !response || !response.body! || !response.body.access_token) {
         debug('failed to refresh token', error);
         reject(error);
       } else {
-        storeToken(req, parse(response.body));
+        storeToken(req, response.body);
         resolve();
       }
     });
@@ -104,11 +104,11 @@ function storeToken(req, tokenData) {
 }
 
 function handleAuthResponse(error, response, body, req, res) {
-  if (error || !response || !parse(response.body) || !parse(response.body).access_token) {
+  if (error || !response || !response.body || !response.body.access_token) {
     debug('auth error', body);
     res.sendStatus(401);
   } else {
-    storeToken(req, parse(response.body))
+    storeToken(req, response.body)
       .then(() => {
         res.status(200).json({ result: 'Success' });
       })
